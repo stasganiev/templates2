@@ -1,0 +1,29 @@
+{
+  "name": "template2",
+  "version": "1.0.1",
+  "description": "Project templete v 2.0 for web-site projects",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stasganiev/templates2.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "gulp",
+    "sass"
+  ],
+  "author": "Stas Ganiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stasganiev/templates2/issues"
+  },
+  "homepage": "https://github.com/stasganiev/templates2#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
