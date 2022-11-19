@@ -11,8 +11,7 @@ function browsersync() {
   })
 }
 
-// Concatination and minified js
-function scripts() {
+function scripts() { // Concatination and minified js
   return src([ // Source files list
     'node_modules/jquery/dist/jquery.min.js', // Connect jquery library (example)
     'app/js/app.js', // User's script using library
@@ -24,3 +23,4 @@ function scripts() {
 }
 
 exports.browsersync = browsersync;
+exports.scripts = scripts;
