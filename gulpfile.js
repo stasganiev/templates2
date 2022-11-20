@@ -1,7 +1,11 @@
+let preprocessor = 'sass';
 const { src, dest, parallel, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
+const sass = require('gulp-sass')(require('sass'));
+const autoprefixer = require('gulp-autoprefixer');
+const cleancss = require('gulp-clean-css');
 
 function browsersync(done) {
   browserSync.init({ // Initiolized Browsersync
@@ -23,10 +27,23 @@ function scripts() { // Concatination and minified js
   .pipe(browserSync.stream()) // Reload Browsersync
 }
 
+function sass() {
+	return src('app/sass/main.scss')
+	.pipe(eval('sass')())
+	.pipe(concat('app.min.css'))
+	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+	.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Minimize
+	.pipe(dest('app/css/'))
+	.pipe(browserSync.stream())
+}
+
 function startwatch() {
 	watch(['app/**/*.js', '!app/**/*.min.js'], scripts);
+  watch('app/**/sass/**/*.scss', sass);
+  watch('app/**/*.html').on('change', browserSync.reload);
 }
 
 exports.browsersync = browsersync;
 exports.scripts = scripts;
-exports.default = parallel(scripts, browsersync, startwatch);
+exports.styles = styles;
+exports.default = parallel(sass, scripts, browsersync, startwatch);
