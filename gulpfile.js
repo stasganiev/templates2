@@ -4,9 +4,14 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-const cleancss = require('gulp-clean-css');
+// const cleancss = require('gulp-clean-css');
 const imagecomp = require('compress-images');
 const clean = require('gulp-clean');
+
+const sourcemaps = require('gulp-sourcemaps');
+const csso = require('gulp-csso');
+const rename = require("gulp-rename");
+const gcmq = require('gulp-group-css-media-queries');
 
 function browsersync(done) {
   browserSync.init({ // Initiolized Browsersync
@@ -28,14 +33,31 @@ function scripts() { // Concatination and minified js
   .pipe(browserSync.stream()) // Reload Browsersync
 }
 
-function styles() {
+// function styles() {
+//   return src('app/sass/main.scss')
+//   .pipe(eval('sass')())
+//   .pipe(concat('app.min.css'))
+//   .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
+//   .pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Minimize
+//   .pipe(dest('app/css/'))
+//   .pipe(browserSync.stream())
+// }
+
+function styles(){
   return src('app/sass/main.scss')
-  .pipe(eval('sass')())
-  .pipe(concat('app.min.css'))
-  .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
-  .pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Minimize
-  .pipe(dest('app/css/'))
-  .pipe(browserSync.stream())
+      .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(autoprefixer({
+          grid: true
+      }))
+      .pipe(gcmq())
+      .pipe(sourcemaps.write())
+      .pipe(rename('app.css'))
+      .pipe(dest('app/css/'))
+      .pipe(csso())
+      .pipe(rename('app.min.css'))
+      .pipe(dest('app/css/'))
+      .pipe(browserSync.reload({stream: true}))
 }
 
 async function images() {
@@ -85,5 +107,6 @@ exports.scripts = scripts;
 exports.styles = styles;
 exports.images = images;
 exports.cleanimg = cleanimg;
+
 exports.default = parallel(styles, scripts, browsersync, startwatch);
 exports.build = series(cleandist, styles, scripts, images, buildcopy);
