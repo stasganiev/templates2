@@ -4,7 +4,6 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-// const cleancss = require('gulp-clean-css');
 const imagecomp = require('compress-images');
 const clean = require('gulp-clean');
 
@@ -33,16 +32,6 @@ function scripts() { // Concatination and minified js
   .pipe(browserSync.stream()) // Reload Browsersync
 }
 
-// function styles() {
-//   return src('app/sass/main.scss')
-//   .pipe(eval('sass')())
-//   .pipe(concat('app.min.css'))
-//   .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
-//   .pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Minimize
-//   .pipe(dest('app/css/'))
-//   .pipe(browserSync.stream())
-// }
-
 function styles(){
   return src('app/sass/main.scss')
       .pipe(sourcemaps.init())
@@ -62,8 +51,8 @@ function styles(){
 
 async function images() {
   imagecomp(
-    "app/img/src/**/*",
-    "app/img/dest/",
+    'app/img/src/**/*',
+    'app/img/',
     { compress_force: false, statistic: true, autoupdate: true }, false,
     { jpg: { engine: "mozjpeg", command: ["-quality", "75"] } },
     { png: { engine: "pngquant", command: ["--quality=75-100", "-o"] } },
@@ -85,7 +74,7 @@ function buildcopy() {
   return src([
     'app/css/**/*.min.css',
     'app/js/**/*.min.js',
-    'app/img/dest/**/*',
+    'app/img/**/*', '!app/img/src/**/*', '!app/img/dest/**/*',
     'app/**/*.html',
     ], { base: 'app' })
   .pipe(dest('dist'))
@@ -108,5 +97,5 @@ exports.styles = styles;
 exports.images = images;
 exports.cleanimg = cleanimg;
 
-exports.default = parallel(styles, scripts, browsersync, startwatch);
+exports.default = parallel(styles, scripts, browsersync, images, startwatch);
 exports.build = series(cleandist, styles, scripts, images, buildcopy);
