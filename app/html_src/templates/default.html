@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang= "en" >
+<html lang= "{{ language }}" >
 <head>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="TE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Site title </title>
-    <meta name="keywords" content= "Word 1, Word 2, ... Word N" >
+    <title> {{ title }} </title>
+    <meta name="keywords" content= "{{ seowords }}" >
     <meta name="description" content="Description for SEO and finding">
 
     <link href="css/app.min.css" rel="stylesheet">
@@ -18,21 +18,9 @@
 </head>
 <body>
 
-  <header class="header">
-
-  <h1>Hello world!</h1>
-  <img class="img-test" src="img/temp.jpg" width="128" height="128" alt="Test">
-
-</header>
-
-  <main class="main container-fluid">
-  <p>text 2</p>
-</main>
-
-  <footer class="footer container-fluid">
-  <p>text 3</p>
-</footer>
-
+  {% include 'components/header.html' %}
+  {% include 'components/main.html' %}
+  {% include 'components/footer.html' %}
 
   <script src="js/app.min.js"></script>
 

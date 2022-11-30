@@ -164,6 +164,8 @@ function njk(){
     .pipe(dest(sourceFolder))
 };
 
+const htmlBuild = series(njk);
+
 // *** Сборка и запуск ***
 
 function buildcopy() {
@@ -172,7 +174,7 @@ function buildcopy() {
     sourceFolder + 'js/**/*.min.js',
     sourceFolder + 'css/**/*.min.css',
     sourceFolder + 'fonts/**/*',
-    sourceFolder + '**/*.html', `!${sourceFolder}html_src/**/*`,
+    `${sourceFolder}**/*.html`, `!${sourceFolder}html_src/**/*`,
     ], { base: sourceFolder })
   .pipe(dest(distFolder))
 }
@@ -193,9 +195,10 @@ exports.images = images;
 exports.scripts = scripts;
 exports.styles = styles;
 exports.fonts = fontsConverter;
+exports.html = htmlBuild;
 
 exports.default = series(
-  parallel(images, scripts, styles),
+  parallel(images, scripts, styles, htmlBuild),
   parallel(browsersync, startwatch)
 );
 exports.build = series(webpConverter, cleandist, buildcopy);
