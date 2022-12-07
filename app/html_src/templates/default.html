@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang= "{{ language }}" >
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="TE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ title }} </title>
+    <meta name="keywords" content= "{{ seowords }}" >
+    <meta name="description" content="{{ seodescription }}">
+
+    <link href="css/app.min.css" rel="stylesheet">
+
+    <link rel="preload" href="fonts/AmaticSC-Regular.woff" as="font" crossorigin="anonymous">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo16.png">
+
+</head>
+<body>
+
+  {% include 'components/header.html' %}
+  {% include 'components/main.html' %}
+  {% include 'components/footer.html' %}
+
+  <script src="js/app.min.js"></script>
+
+</body>
+</html>
