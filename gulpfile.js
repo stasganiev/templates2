@@ -3,10 +3,6 @@ const clean = require('gulp-clean');
 const browserSync = require('browser-sync').create();
 
 const imagecomp = require('compress-images');
-// const newer = require('gulp-newer');
-// const imagemin = require('gulp-imagemin');
-// const imageminJpegRecompress = require('imagemin-jpeg-recompress');
-// const pngquant = require('imagemin-pngquant');
 const webp = require('gulp-webp');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
@@ -20,6 +16,7 @@ const ttf2woff = require('gulp-ttf2woff');
 const ttf2woff2 = require('gulp-ttf2woff2');
 const fonter = require('gulp-fonter');
 const nunjucks = require('gulp-nunjucks');
+const gulpPug = require('gulp-pug');
 
 const sourceFolder = 'app/';
 const distFolder = 'dist/';
@@ -60,38 +57,6 @@ async function imageMin() {
   )
 }
 
-// function imageMin(){
-//   return src(sourceImg + '**/*.*')
-//       .pipe(newer(distImg))
-//       .pipe(imagemin([
-
-//           imageminJpegRecompress({
-//               progressive: true,
-//               min: 70, max: 75
-//           }),
-
-//           pngquant({
-//               speed: 5,
-//               quality: [0.6, 0.8]
-//           }),
-
-//           imagemin.svgo({
-//               plugins: [
-//                       { removeViewBox: false },
-//                       { removeUnusedNS: false },
-//                       { removeUselessStrokeAndFill: false },
-//                       { cleanupIDs: false },
-//                       { removeComments: true },
-//                       { removeEmptyAttrs: true },
-//                       { removeEmptyText: true },
-//                       { collapseGroups: true }
-//               ]
-//           })
-
-//       ]))
-//       .pipe(dest(distImg))
-// }
-
 function webpConverter(){
   return src(distImg + '**/*.{png,jpg,jpeg}')
       .pipe(webp())
@@ -104,7 +69,7 @@ const images = series(imageMin, webpConverter); //, (done) => {browserSync.reloa
 
 function scripts() { // Concatination and minified js
   return src([ // Source files list
-    // 'node_modules/jquery/dist/jquery.min.js', // Connect jquery library (example)
+    'node_modules/jquery/dist/jquery.min.js', // Connect jquery library (example)
     sourceFolder + 'js/app.js', // User's script using library
     ])
   .pipe(concat('app.min.js')) // Concatination to one file
@@ -159,12 +124,18 @@ const fontsConverter = series(otf2ttf, ttf2woff2Converter);
 // *** HTML ***
 
 function njk(){
-  return src(sourceFolder + 'html_src/*.html')
+  return src([`${sourceFolder}html_src/**/*.html`, `!${sourceFolder}html_src/templates/**/*.html`, `!${sourceFolder}html_src/components/**/*.html`])
     .pipe(nunjucks.compile())
     .pipe(dest(sourceFolder))
 };
 
-const htmlBuild = series(njk);
+function pug(){
+  return src([`${sourceFolder}html_src/**/*.pug`, `!${sourceFolder}html_src/templates/**/*.pug`, `!${sourceFolder}html_src/components/**/*.pug`])
+    .pipe(gulpPug({pretty:true}))
+    .pipe(dest(sourceFolder))
+};
+
+const htmlBuild = series(njk, pug);
 
 // *** Сборка и запуск ***
 
