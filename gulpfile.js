@@ -98,13 +98,11 @@ function webpConverter(){
       .pipe(dest(distImg))
 }
 
-const images = series(imageMin, webpConverter); //, (done) => {browserSync.reload(); done();});
-
 // *** JS ***
 
 function scripts() { // Concatination and minified js
   return src([ // Source files list
-    // 'node_modules/jquery/dist/jquery.min.js', // Connect jquery library (example)
+    'node_modules/jquery/dist/jquery.min.js', // Connect jquery library (example)
     sourceFolder + 'js/app.js', // User's script using library
     ])
   .pipe(concat('app.min.js')) // Concatination to one file
@@ -191,14 +189,16 @@ exports.browsersync = browsersync;
 
 exports.imageMin = imageMin;
 exports.webp = webpConverter;
-exports.images = images;
 exports.scripts = scripts;
 exports.styles = styles;
-exports.fonts = fontsConverter;
 exports.html = htmlBuild;
 
+exports.fonts = fontsConverter;
+
 exports.default = series(
-  parallel(images, scripts, styles, htmlBuild),
+  imageMin,
+  parallel(scripts, styles, htmlBuild),
+  webpConverter,
   parallel(browsersync, startwatch)
 );
 exports.build = series(webpConverter, cleandist, buildcopy);
