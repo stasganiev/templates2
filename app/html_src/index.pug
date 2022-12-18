@@ -1,15 +1,10 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible" content="TE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Page title
-    meta(name="keywords" content="Word1, word2, ..., wordN")
-    meta(name="description" content="Whole description")
+extends templates/default.pug
 
-    link(href="css/style_min.css" rel="stylesheet")
-    link(rel="preload" href="fonts/Nunito-Regular.ttf" as="font" crossorigin="anonymous")
-    link(rel="shortcut icon" type="image/x-icon" href="img/logo16.png")
-  body
-    include components/header.pug
+block header
+  include components/header.pug
+
+block main
+  include components/main.pug
+
+block footer
+  include components/footer.pug

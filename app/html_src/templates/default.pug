@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+  head
+    block metatags
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible" content="TE=edge")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0")
+      meta(name="keywords" content="Word1, word2, ..., wordN")
+      meta(name="description" content="Whole description")
+    title Page title
+    block links_styles
+      link(href="css/app.min.css" rel="stylesheet")
+    block links_fonts
+      link(rel="preload" href="fonts/AmaticSC-Regular.woff2" as="font" crossorigin="anonymous")
+    block favicon
+      link(rel="shortcut icon" type="image/x-icon" href="img/logo16.png")
+  body
+    block header
+    block main
+    block footer
