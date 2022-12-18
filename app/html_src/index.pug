@@ -1,5 +1,10 @@
 extends templates/default.pug
 
+append config
+  - keywords = 'Word1, word2'
+  - description = 'About this site'
+  - pageTitle = 'Page 1'
+
 block header
   include components/header.pug
 
