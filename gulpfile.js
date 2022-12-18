@@ -169,7 +169,9 @@ exports.fonts = fontsConverter;
 exports.html = htmlBuild;
 
 exports.default = series(
+  imageMin,
   parallel(images, scripts, styles, htmlBuild),
+  webpConverter,
   parallel(browsersync, startwatch)
 );
 exports.build = series(webpConverter, cleandist, buildcopy);
