@@ -1,0 +1,312 @@
+// ////////////////////////////
+// Общие свойства для всех
+// ////////////////////////////
+
+main,
+header,
+footer,
+section,
+article,
+nav,
+menu,
+aside,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+table,
+tr,
+td,
+div,
+img,
+a,
+p,
+span {
+  position: relative;
+}
+
+main::before,
+header::before,
+footer::before,
+section::before,
+article::before,
+nav::before,
+menu::before,
+aside::before,
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before,
+ul::before,
+ol::before,
+li::before,
+table::before,
+tr::before,
+td::before,
+div::before,
+img::before,
+a::before,
+p::before,
+span::before {
+  position: absolute;
+
+  width: 30px;
+  left: 0;
+  top: 0;
+
+  font-size: 8px;
+  text-align: center;
+  text-transform: lowercase;
+  color: #000000;
+  border-radius: 10px;
+}
+
+// ////////////////////////////
+// Базовые элементы страницы
+// ////////////////////////////
+main,
+header,
+footer {
+  background-color: rgba(221, 221, 221, 0.05);
+  border: #dddddd 1px dashed;
+}
+
+main::before,
+header::before,
+footer::before {
+  background-color: rgba(221, 221, 221, 0.5);
+}
+
+main::before {
+  content: "main";
+}
+
+header::before {
+  content: "hder";
+}
+
+footer::before {
+  content: "foot";
+}
+
+// ////////////////////////////
+// Базовая разметка
+// ////////////////////////////
+
+section,
+article,
+nav,
+menu,
+aside {
+  background-color: rgba(153, 153, 153, 0.05);
+  border: #999999 1px dashed;
+}
+
+section::before,
+article::before,
+nav::before,
+menu::before,
+aside::before {
+  background-color: rgba(153, 153, 153, 0.5);
+}
+
+section::before {
+  content: "sect";
+}
+
+article::before {
+  content: "artc";
+}
+
+nav::before {
+  content: "nav";
+}
+
+menu::before {
+  content: "menu";
+}
+
+aside::before {
+  content: "asid";
+}
+
+// ////////////////////////////
+// Заголовки
+// ////////////////////////////
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  background-color: rgba(221, 0, 0, 0.05);
+  border: #dd0000 1px dashed;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  background-color: rgba(221, 0, 0, 0.5);
+}
+
+h1::before {
+  content: "h1";
+}
+
+h2::before {
+  content: "h2";
+}
+
+h3::before {
+  content: "h3";
+}
+
+h4::before {
+  content: "h4";
+}
+
+h5::before {
+  content: "h5";
+}
+
+h6::before {
+  content: "h6";
+}
+
+// ////////////////////////////
+// Составные элементы
+// ////////////////////////////
+
+ul,
+ol,
+li,
+table,
+tr,
+td {
+  background-color: rgba(221, 85, 0, 0.05);
+  border: #dd5500 1px dashed;
+}
+
+ul::before,
+ol::before,
+li::before,
+table::before,
+tr::before,
+td::before {
+  background-color: rgba(221, 85, 0, 0.5);
+}
+
+ul::before {
+  content: "ul";
+}
+
+ol::before {
+  content: "ol";
+}
+
+li::before {
+  content: "li";
+}
+
+table::before {
+  content: "tble";
+}
+
+tr::before {
+  content: "tr";
+}
+
+td::before {
+  content: "td";
+}
+
+// ////////////////////////////
+// Основная разметка
+// ////////////////////////////
+div {
+  background-color: rgba(221, 221, 0, 0.05);
+  border: #dddd00 1px dashed;
+}
+
+div::before {
+  background-color: rgba(221, 221, 0, 0.5);
+  content: "div";
+}
+
+img {
+  background-color: rgba(221, 0, 221, 0.05);
+  border: #dd00dd 1px dashed;
+}
+
+img::before {
+  background-color: rgba(221, 0, 221, 0.5);
+  content: "img";
+}
+
+a,
+p,
+span {
+  background-color: rgba(0, 221, 221, 0.05);
+  border: #00dddd 1px dashed;
+}
+
+a::before,
+p::before,
+span::before {
+  background-color: rgba(0, 221, 221, 0.5);
+}
+
+a::before {
+  content: "a";
+}
+
+p::before {
+  content: "p";
+}
+
+span::before {
+  content: "span";
+}
+
+// ////////////////////////////
+// Для отключения рамок
+// ////////////////////////////
+
+// main,
+// header,
+// footer,
+// section,
+// article,
+// nav,
+// menu,
+// aside,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// ul,
+// ol,
+// li,
+// table,
+// tr,
+// td,
+// div,
+// img,
+// a,
+// p,
+// span {
+//   border: none;
+// }

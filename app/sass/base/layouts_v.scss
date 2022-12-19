@@ -1,0 +1,33 @@
+// ретинизация
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+// сетка
+$xs-min: 320px; //mobile *
+$xs-max: 599.9px;
+$s-min: 600px;
+$s-max: 767.9px;
+$m-min: 768px; //tablet *
+$m-max: 1169.9px;
+$l-min: 1170px; //1280px //desktop *
+$l-max: 1439.9px;
+$xl-min: 1440px; //1560px
+
+// максимальная ширина мобильного устройства
+$mobile-max-width: 1024px;
+
+// минимально возможная ширина сайта (менять только значение)
+$min-content: $xs-min;
+
+// для расположения контента в сетке
+$xs-padding: 15px;
+$s-padding: 20px;
+$m-padding: 30px;
+$l-padding: 130px;
+$xl-padding: 150px;
+
+$xs-content: ($xs-min - 2 * $xs-padding);
+$s-content: ($s-min - 2 * $s-padding);
+$m-content: ($m-min - 2 * $m-padding);
+$l-content: ($l-min - 2 * $l-padding);
+$xl-content: ($xl-min - 2 * $xl-padding);

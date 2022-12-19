@@ -1,0 +1,88 @@
+// Цвета
+@mixin colors($color: $txt-color, $colorbk: $bk-color) {
+  color: $color;
+  background-color: $colorbk;
+}
+
+// Типографика
+@mixin typography($fs: 1rem, $lh: 1.25, $fw: normal, $tt: unset) {
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+  text-transform: $tt;
+}
+
+// Позиция, размеры и отступы
+@mixin pos-bottom-right($bottom: 0, $right: 0) {
+  position: absolute;
+  bottom: $bottom;
+  right: $right;
+}
+
+@mixin pos-bottom-left($bottom: 0, $left: 0) {
+  position: absolute;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin pos-top-right($top: 0, $right: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin pos-top-left($top: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin size($w: 100px, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin nospace {
+  margin: 0;
+  padding: 0;
+}
+
+// Сетка
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@mixin flex-row-sp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@mixin flex-col-sp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@mixin flex-col-ones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}

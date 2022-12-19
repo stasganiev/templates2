@@ -1,0 +1,38 @@
+.hidden {
+  display: none;
+}
+
+.hidden__no {
+  display: inline-block;
+}
+
+@media (max-width: $s-max) {
+  .hidden_mobile {
+    display: none;
+  }
+}
+
+@media (min-width: $m-min) and (max-width: $m-max) {
+  .hidden_tablet {
+    display: none;
+  }
+}
+
+@media (min-width: $l-min) {
+  .hidden_desktop {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}

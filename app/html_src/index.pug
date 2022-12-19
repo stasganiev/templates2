@@ -1,15 +1,9 @@
-extends templates/default.pug
+extends includes/template.pug
 
 append config
   - keywords = 'Word1, word2'
   - description = 'About this site'
   - pageTitle = 'Page 1'
 
-block header
-  include components/header.pug
-
-block main
-  include components/main.pug
-
-block footer
-  include components/footer.pug
+block content
+  include ../components/content.pug

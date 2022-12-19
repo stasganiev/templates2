@@ -81,7 +81,7 @@ function scripts() { // Concatination and minified js
 // *** Styles ***
 
 function styles(){
-  return src(sourceFolder + 'sass/main.scss')
+  return src(sourceFolder + 'sass/index.scss')
       .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(autoprefixer({
@@ -124,13 +124,13 @@ const fontsConverter = series(otf2ttf, ttf2woff2Converter);
 // *** HTML ***
 
 function njk(){
-  return src([`${sourceFolder}html_src/**/*.html`, `!${sourceFolder}html_src/templates/**/*.html`, `!${sourceFolder}html_src/components/**/*.html`])
+  return src([`${sourceFolder}html_src/**/*.html`, `!${sourceFolder}html_src/includes/**/*.html`])
     .pipe(nunjucks.compile())
     .pipe(dest(sourceFolder))
 };
 
 function pug(){
-  return src([`${sourceFolder}html_src/**/*.pug`, `!${sourceFolder}html_src/templates/**/*.pug`, `!${sourceFolder}html_src/components/**/*.pug`])
+  return src([`${sourceFolder}html_src/**/*.pug`, `!${sourceFolder}html_src/includes/**/*.pug`])
     .pipe(gulpPug({pretty:true}))
     .pipe(dest(sourceFolder))
 };
