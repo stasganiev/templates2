@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    min-height: 75px;
+}
+
+.navbar-items {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-item-link {
+    padding: 10px 30px;
+}

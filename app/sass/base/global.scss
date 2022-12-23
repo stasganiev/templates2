@@ -13,10 +13,10 @@ body {
   flex-direction: column;
   height: 100%;
 
-  // min-width: $min-content;
-  // @include nospace;
-  // @include font-base;
-  // @include colors($text-color, $bg-color);
+  min-width: $min-content;
+  @include nospace;
+  @include font-base;
+  @include colors($text-color, $bg-color);
 }
 
 main {

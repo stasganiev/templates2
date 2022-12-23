@@ -2,13 +2,14 @@
 @import 'base/layouts_v.scss';
 @import 'base/colors_v.scss';
 @import 'base/mixins.scss';
-@import 'base/normalize.sccs';
+@import 'base/normalize.scss';
 @import 'base/fonts.scss';
 @import 'base/global.scss';
+@import 'base/containers.scss';
 @import 'base/hidden.scss';
 
 // Components and elements
 @import '../components/components.scss';
 
 // Service layouts
-// @import 'base/outlines.scss';
+@import 'base/outlines.scss';

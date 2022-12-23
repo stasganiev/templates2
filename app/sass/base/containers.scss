@@ -1,0 +1,74 @@
+// Fixed containers:
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// 2 BP:
+@media (max-width: $s-max) {
+    .container2 {
+        max-width: $s-content;
+    }
+}
+
+@media (min-width: $l-min) {
+    .container2 {
+        max-width: $l-content;
+    }
+}
+
+  // 3 BP:
+@media (max-width: $s-max) {
+    .container3 {
+        max-width: $s-content;
+    }
+}
+
+@media (min-width: $m-min) and (max-width: $m-max) {
+    .container3 {
+        max-width: $m-content;
+    }
+}
+
+@media (min-width: $l-min) {
+    .container3 {
+        max-width: $l-content;
+    }
+}
+
+// Fluid containers:
+.container-fluid {
+    width: 100%;
+}
+
+// 2 BP:
+@media (max-width: $s-max) {
+    .container-fluid2 {
+        padding: 0 $s-padding;
+    }
+}
+
+@media (min-width: $l-min) {
+    .container-fluid2 {
+        padding: 0 $l-padding;
+    }
+}
+
+// 3 BP:
+@media (max-width: $s-max) {
+    .container-fluid3 {
+        padding: 0 $s-padding;
+    }
+}
+
+@media (min-width: $m-min) and (max-width: $m-max) {
+    .container-fluid3 {
+        padding: 0 $m-padding;
+    }
+}
+
+@media (min-width: $l-min) {
+    .container-fluid3 {
+        padding: 0 $l-padding;
+    }
+}

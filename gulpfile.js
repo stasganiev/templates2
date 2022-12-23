@@ -153,7 +153,8 @@ function buildcopy() {
 function startwatch() {
   watch(`${sourceImg}**/*`, images);
   watch([`${sourceFolder}**/*.js`, `!${sourceFolder}**/*.min.js`], scripts);
-  watch(sourceFolder + '**/sass/**/*.scss', styles);
+  watch([`${sourceFolder}sass/**/*.scss`, `${sourceFolder}components/**/*.scss`], styles);
+  watch([`${sourceFolder}html_src/**/*.{html,pug}`, `${sourceFolder}components/**/*.{html,pug}`], htmlBuild);
   watch(sourceFolder + '**/*.html').on('change', browserSync.reload);
 }
 
