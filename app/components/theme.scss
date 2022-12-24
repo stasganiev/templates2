@@ -1,0 +1,10 @@
+.navbar {
+    border-bottom-color: $other-color;
+}
+
+.navbar-item-link::after,
+.navbar-item-link::before,
+.navbar-item-link:hover::after,
+.navbar-item-link:hover::before {
+    background-color: $other-color;
+}

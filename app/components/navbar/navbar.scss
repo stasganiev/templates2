@@ -3,7 +3,13 @@
     flex-direction: row;
     align-items: center;
 
+    margin-left: auto;
+    margin-right: auto;
+
     min-height: 75px;
+    max-width: 941px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 .navbar-items {
@@ -15,4 +21,37 @@
 
 .navbar-item-link {
     padding: 10px 30px;
+    position: relative;
+}
+
+.navbar-item-link::after,
+.navbar-item-link::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 1px;
+
+    transition-property: all;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0, 0, 1, 1);
+}
+
+.navbar-item-link::before {
+    left: 0;
+}
+
+.navbar-item-link:hover::after,
+.navbar-item-link:hover::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 1px;
+}
+
+.navbar-item-link:hover::before {
+    left: 0;
 }
