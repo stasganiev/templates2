@@ -5,6 +5,9 @@ append config
   - description = 'About this site'
   - pageTitle = 'Page 1'
 
+block fonts
+  link(rel="preload" href="fonts/Gilroy-Bold.woff2" as="font" crossorigin="anonymous")
+  link(rel="preload" href="fonts/Gilroy-Medium.woff2" as="font" crossorigin="anonymous")
 block content
   include includes/mixins.pug
   include ../components/content.pug

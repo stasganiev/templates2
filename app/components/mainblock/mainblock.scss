@@ -1,0 +1,15 @@
+.banner_name {
+  @include font-gilroybold(47px, 1.25);
+}
+
+@media (max-width: $s-max) {
+  .banner_language {
+    @include font-gilroybold(34px, 1.25);
+  }
+}
+
+@media (min-width: $l-min) {
+  .banner_language {
+    @include font-gilroybold(16px, 1.25);
+  }
+}
